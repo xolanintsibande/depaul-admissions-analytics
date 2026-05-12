@@ -2,23 +2,6 @@
 
 # DePaul University International Admissions Analytics
 
-**Recovering 220 Missing Students Through Data Analysis**
-
-
-
-![Project Status](https://img.shields.io/badge/Status-Completed-success)
-
-
-
-
-![Timeline](https://img.shields.io/badge/Timeline-3%20Weeks-blue)
-
-
-
-
-![Impact](https://img.shields.io/badge/Impact-%24%7B3.5M%2B%7D%20Revenue%20Potential-orange)
-
-
 
 ---
 
@@ -284,51 +267,6 @@ Convert pending applicants into admitted students systematically
 
 ---
 
-## 📁 Repository Contents
-
-├── data-dictionaries/          # Field definitions and data structure
-├── cleaning-documentation/     # 7-step cleaning process with validation
-├── dashboard-documentation/    # Visualization guide and filter logic
-├── insights-and-recommendations/ # Business findings and action items
-├── reports/                    # Full PDF deliverables (Week 1, 2, 3)
-├── visuals/                    # Dashboard screenshots
-└── links-and-resources.md      # Live dashboard and demo links
----
-
-## 🔗 Quick Links
-
-| Resource | Link |
-|----------|------|
-| Live Dashboard | [Open in Looker Studio](https://drive.google.com/file/d/1w_MBMbzHTWoWMGcQhhAV2XeNB5Cmc8EW/view?usp=drivesdk) |
-| Dashboard Demo Video | [Watch 2-min walkthrough](https://drive.google.com/file/d/11BbfQbRZgbt08TFIcLDowZL72ZKj7gCC/view?usp=drivesdk) |
-| Cleaning Documentation | [View transformation log](https://docs.google.com/spreadsheets/d/16a9t0CX49NpcWSXF_cpmZnsEO_Z8ccT/edit) |
-
----
-
-## 📊 Project Timeline
-
-**Week 1 (Data Exploration):** Identified quality issues, built data dictionary, profiled 7,543 records  
-**Week 2 (Data Cleaning):** 7-step transformation, reduced to 5,000 clean records  
-**Week 3 (Dashboard & Insights):** Built interactive dashboard, delivered 4 business recommendations  
-
-**Total Duration:** 3 weeks  
-**Deliverables:** 3 formal reports, 1 live dashboard, 4 actionable recommendations
-
----
-
-## 👤 About This Project
-
-**Created by:** Xolani Ntsibande  
-**Role:** Data Analytics Intern  
-**Organization:** Excellarate  
-**Date:** April 2026  
-
-**Portfolio:**
-- LinkedIn: [Connect with me](#) *(add your LinkedIn URL)*
-- Email: *(add your email)*
-
----
-
 ## 📝 Project Impact Summary
 
 ✅ **220 recoverable students identified** (documentation gaps, not rejections)  
@@ -338,13 +276,3 @@ Convert pending applicants into admitted students systematically
 ✅ **Workload rebalancing roadmap** (from 68.9% concentration to 45% target)
 
 ---
-
-## 📄 License
-
-This project is for portfolio demonstration purposes. Data has been anonymized and is used with permission from the Excellarate internship program.
-
----
-
-**Questions?** Open an issue or contact me directly.
-
-**Want to see more?** Check out my other analytics projects: [GitHub Profile](#) *(add your GitHub profile URL)*
