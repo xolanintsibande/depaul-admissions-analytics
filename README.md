@@ -1,278 +1,256 @@
-# depaul-admissions-analytics
-
-# DePaul University International Admissions Analytics
-
+# International Student Application Analytics
 
 ---
 
-## 📊 What This Project Does
+## 📊 Project Overview
 
-This project analyzes 5,000 international student applications to DePaul University from 97 countries (2023-2025) to answer one critical question:
+This project demonstrates a complete data analytics workflow: messy raw data → cleaned dataset → actionable insights through interactive visualization.
 
-**"Why are hundreds of qualified applicants not getting admitted?"**
+**The Challenge:** Process application records with duplicate entries, missing values, and formatting inconsistencies to enable stakeholders to query data in seconds instead of hours.
 
-The answer: **They're not being rejected. They're stuck in the process.**
+**The Solution:** Build a repeatable data pipeline that transforms raw, messy data into a clean, queryable dataset and visualize results for non-technical stakeholders.
 
 ---
 
 ## 🎯 The Problem We Solved
 
-### Before This Analysis
+### Starting Situation
+- Large dataset with ~40% duplicate entries
+- 47.5% of columns completely empty (unused fields)
+- 60.5% null rate across the database
+- Multiple data quality issues preventing reliable analysis
+- Manual querying took hours to answer basic questions
 
-- 7,543 messy application records with duplicate entries
-- 33.7% of data was duplicated (inflating applicant counts)
-- 47.5% of the database structure was completely empty
-- No visibility into why admission rates varied dramatically by country:
-  - India: 77.5% admitted
-  - Ghana: 26.5% admitted  
-  - Nigeria: 31.0% admitted
-
-### Business Impact of the Problem
-
-- Hundreds of qualified students blocked from admission
-- Counselor team of 4 overwhelmed with unclear priorities
-- One counselor handling 68.9% of all outreach work
-- No system to identify which students needed help vs which were rejected
+### The Challenge
+How do you transform unusable data into a strategic asset that enables real business decisions?
 
 ---
 
 ## ✅ What We Built
 
-### Week 1: Found the Problems
-- Analyzed 7,543 application records across 80 data fields
-- Identified 2,543 duplicate entries skewing all metrics
-- Documented data quality issues blocking accurate analysis
-- Created comprehensive data dictionary (80 fields defined)
+### **Week 1: Data Exploration & Quality Assessment**
+- Analyzed dataset structure across 80 fields
+- Identified and documented data quality issues
+- Created comprehensive data dictionary with field definitions
+- Assessed null rates, duplicates, and formatting problems
+- Flagged blockers for downstream analysis
+- **Deliverable:** Week 1 EDA Report with quality assessment
 
-📄 [View Week 1 Full Report](reports/Week1_DataExplorationReport.pdf)
+### **Week 2: Data Cleaning & Transformation**
+- Removed duplicate records using primary key matching
+- Eliminated unused columns (45% reduction)
+- Fixed formatting inconsistencies:
+  - Phone numbers stored in scientific notation → standard format
+  - Country names standardized to consistent capitalization
+  - Timestamps converted from Unix milliseconds to readable dates
+  - Combined fields split into separate columns
+- Documented all transformation steps for reproducibility
+- Validated data quality improvements
+- **Deliverable:** Clean dataset with transformation log
 
-### Week 2: Cleaned the Data
-- Removed 2,543 duplicate records
-- Eliminated 38 completely empty columns
-- Fixed phone numbers stored incorrectly (9.20E+11 → readable format)
-- Standardized 95 country names ("united states" vs "United States")
-- Converted timestamps from computer code to readable dates
-- **Result: 7,543 messy rows → 5,000 clean, reliable records**
-
-📄 [View Week 2 Full Report](reports/Week2_DataCleaningReport.pdf)
-
-### Week 3: Built the Dashboard
-- Created interactive dashboard with 9 visualizations
-- Added 4 filters: Country, Term, Application Source, Counselor
-- Enabled one-click analysis: select Ghana → see full recruitment picture instantly
-- Color-coded conversion rates (red = needs attention, green = performing well)
-
-📄 [View Week 3 Full Report](reports/Week3_DashboardReport.pdf)
-
-🔗 [**Open Live Dashboard**](https://drive.google.com/file/d/1w_MBMbzHTWoWMGcQhhAV2XeNB5Cmc8EW/view?usp=drivesdk)
-
-🎥 [**Watch 2-Minute Dashboard Demo**](https://drive.google.com/file/d/11BbfQbRZgbt08TFIcLDowZL72ZKj7gCC/view?usp=drivesdk)
+### **Week 3: Dashboard & Visualization**
+- Built interactive dashboard with 9 key visualizations
+- Implemented 4 live filters for dynamic querying
+- Color-coded performance metrics for quick pattern recognition
+- Enabled one-click analysis (select filter → instant results)
+- Created user guide for non-technical stakeholders
+- **Deliverable:** Interactive dashboard + comprehensive documentation
 
 ---
 
-## 💡 What We Discovered
+## 📈 Key Analytical Findings
 
-### Finding #1: Missing Paperwork, Not Missing Qualifications
+**Finding 1: Data Quality Impact**
+- Duplicate records were inflating key metrics
+- Removal reduced dataset by 33.7%
+- Null rate improved from 60.5% to 35.8%
 
-**895 applicants (17.9%) are blocked by missing transcripts**
+**Finding 2: Volume Distribution Pattern**
+- Clear seasonal concentration in application intake
+- One intake period accounts for disproportionate volume
+- Implications for capacity planning and resource allocation
 
-- These students submitted applications (showing serious interest)
-- They're not rejected (showing they likely qualify)
-- They're stuck waiting because paperwork is incomplete
-- **100% of students who received follow-up calls got admitted (148 out of 148)**
+**Finding 3: Follow-Up Effectiveness**
+- Targeted outreach showed measurable conversion improvement
+- Systematic follow-ups produced high engagement rates
+- Process optimization opportunities identified
 
-**What this means:** Every follow-up call = one admitted student
-
----
-
-### Finding #2: Geographic Performance Gap
-
-| Country | Applications | Admitted | Conversion Rate |
-|---------|--------------|----------|-----------------|
-| India | 2,684 | 2,080 | **77.5%** ✅ |
-| China | 82 | 65 | **79.3%** ✅ |
-| United States | 489 | 328 | **67.1%** ✅ |
-| Pakistan | 252 | 147 | 58.3% |
-| **Ghana** | **412** | **109** | **26.5%** ⚠️ |
-| **Nigeria** | **361** | **112** | **31.0%** ⚠️ |
-
-**What this means:** Ghana and Nigeria submit 773 applications but only 221 get admitted. The data shows this is a documentation barrier, not a qualification barrier.
+**Finding 4: Process Bottleneck Identification**
+- Incomplete documentation identified as primary workflow blocker
+- Not a qualification issue but a process issue
+- Addressable through automated systems and workflow optimization
 
 ---
 
-### Finding #3: Workload Is Not Balanced
+## 💡 Strategic Recommendations
 
-**Counselor Distribution:**
-- Jagdeep: 1,244 contacts (68.9%)
-- Swarna: 311 contacts (17.2%)
-- Ayesha: 166 contacts (9.2%)
-- Lavnaya: 85 contacts (4.7%)
+### Recommendation 1: Automate Reminder Systems
+- Identify incomplete applications at specific checkpoints
+- Send automated follow-ups at defined intervals
+- Track conversion rates monthly to measure effectiveness
 
-**What this means:** One person is handling nearly 70% of all student outreach. This creates a bottleneck and risk if that person is unavailable.
+### Recommendation 2: Workflow Optimization
+- Standardize process steps for consistency
+- Identify and eliminate redundant steps
+- Create clear escalation paths for blocked applications
 
----
+### Recommendation 3: Capacity Planning
+- Align resource allocation to intake volume patterns
+- Use historical data to forecast workload peaks
+- Enable data-driven staffing decisions
 
-### Finding #4: Fall Intake Drives Everything
-
-**Application Volume by Term:**
-- Fall 2024: 1,459 applications
-- Winter 2024: Moderate volume
-- Summer 2025: 50 applications
-
-**What this means:** Marketing budget and counselor capacity should align with Fall deadline timing, not spread evenly across the year.
-
----
-
-## 🚀 Our Recommendations
-
-### Recommendation 1: Build Automated Transcript Reminder System
-
-**The Opportunity:**
-- 895 students waiting with missing transcripts
-- Ghana and Nigeria have 773 applications stuck at 28.6% conversion
-- Follow-up calls produced 100% admission rate (148 out of 148)
-
-**What To Do:**
-1. Send automated email at 7, 14, and 21 days when:
-   - Student has not been admitted yet
-   - Reason = missing transcript
-2. Assign one counselor to specialize in Ghana and Nigeria support
-
-**Expected Impact:**  
-Recovering just 50% of stuck Ghana/Nigeria applicants = **220 additional admitted students**
-
-**Revenue Impact:**  
-220 students × $16,000 average tuition = **$3.5M+ potential revenue**
+### Recommendation 4: Systematic Follow-Up Protocol
+- Extend proven follow-up workflows to entire pipeline
+- Monitor conversion rates at each stage
+- Iterate based on performance metrics
 
 ---
 
-### Recommendation 2: Rebalance Counselor Workload
+## 📊 How to Use This Dashboard
 
-**Current State:**
-- Jagdeep: 68.9% of workload
-- Other 3 counselors: 31.1% combined
+### For Analysts
+- Query specific segments instantly
+- Compare metrics across filter combinations
+- Export data for further analysis
+- Identify trends and outliers quickly
 
-**Target State:**
-- Jagdeep: 45%
-- Swarna: 25%
-- Ayesha: 20%
-- Lavnaya: 10%
-
-**What To Do:**
-- Assign Lavnaya and Ayesha as primary contacts for Ghana and Nigeria
-- Use dashboard's Counselor filter to track rebalancing monthly
-
-**Expected Impact:**  
-Reduced bottleneck risk, improved response time for students
-
----
-
-### Recommendation 3: Concentrate Marketing on Fall Intake
-
-**The Data:**
-- Fall 2024: 1,459 applications
-- Summer 2025: 50 applications
-
-**What To Do:**
-- Allocate majority of marketing budget to 3 months before Fall deadline
-- Use dashboard's Term filter to compare current intake pace vs last year
-
-**Expected Impact:**  
-Higher ROI on marketing spend, better counselor capacity planning
-
----
-
-### Recommendation 4: Scale the Follow-Up Protocol
-
-**The Proof:**
-- Current: 148 follow-up calls → 148 admissions (100% conversion)
-
-**What To Do:**
-1. Apply follow-up workflow to ALL applicants where:
-   - Not yet admitted
-   - Not a hard rejection
-2. Track conversion rate monthly to confirm 100% holds at higher volume
-
-**Expected Impact:**  
-Convert pending applicants into admitted students systematically
-
----
-
-## 📈 How to Use This Dashboard
-
-### For Recruitment Managers
-
-**Question: "How is Ghana performing?"**
-1. Open dashboard
-2. Click Country filter → select Ghana
-3. Instantly see:
-   - Total applications: 412
-   - Admitted: 109
-   - Conversion rate: 26.5% (red = needs attention)
-   - Which counselors contacted them
-   - Why they're not converting (missing transcripts)
-
-**Time from question to answer: 5 seconds**
-
----
-
-### For Counselors
-
-**Question: "Which students should I call today?"**
-1. Open dashboard
-2. Click your name in Counselor filter
-3. See all your assigned contacts
-4. Check Outcome Distribution → prioritize "Missing 0 Transcript" category
-
----
+### For Managers
+- Monitor key performance indicators
+- Identify underperforming segments
+- Make evidence-based decisions
+- Track progress toward goals
 
 ### For Leadership
-
-**Question: "Where should we invest recruitment budget next year?"**
-1. Applications by Term chart → shows Fall drives volume
-2. Country Volume chart → shows geographic concentration
-3. Conversion Rate table → shows which markets need support vs which are working
-
-**Make budget decisions based on actual data, not guesses**
+- Understand overall trends and patterns
+- Evaluate resource allocation effectiveness
+- Plan strategy based on actual data
+- Communicate insights to stakeholders
 
 ---
 
-## 🛠️ Technical Details (For Data Teams)
+## 🛠️ Technical Details
 
-### Tools Used
-- **Data Cleaning:** Google Sheets (7-step transformation process)
-- **Dashboard:** Looker Studio (9 visualizations, 4 live filters)
-- **Analysis:** Python (data profiling and visualization)
-- **Documentation:** Comprehensive data dictionaries and field mapping
+### Tools & Technologies
+- **Data Cleaning:** Google Sheets + Python (pandas, numpy)
+- **Visualization:** Looker Studio
+- **Analysis:** Python (data profiling, statistical analysis)
+- **Documentation:** Markdown + CSV data dictionaries
 
 ### Data Quality Improvements
+
 | Metric | Before | After | Improvement |
 |--------|--------|-------|-------------|
 | Total Rows | 7,543 | 5,000 | 33.7% duplicates removed |
 | Total Columns | 80 | 44 | 45% reduction |
 | Null Rate | 60.5% | 35.8% | 24.7% improvement |
-| Empty Columns | 38 (47.5%) | 0 | 100% cleanup |
+| Empty Columns | 38 | 0 | 100% cleanup |
 | Format Issues | 12 | 0 | Fully standardized |
 
-### Key Transformations
-1. Removed 38 completely empty columns
-2. Fixed 3 column name spelling errors
-3. Removed 2,543 duplicate records (Reference_ID + Intake matching)
-4. Standardized 95 country names to Title Case
-5. Converted 7 timestamp columns from Unix milliseconds to YYYY-MM-DD
-6. Split combined Intake field into Program + Term (4,997 successful)
-7. Fixed 176 phone numbers stored as integers
+### Key Transformations Applied
 
-📂 [View Complete Cleaning Documentation](cleaning-documentation/cleaning-process.md)
+✅ Duplicate detection and removal using primary key matching  
+✅ Column reduction and field consolidation  
+✅ Phone number format standardization  
+✅ Country name normalization (95+ variations)  
+✅ Timestamp conversion (Unix milliseconds → YYYY-MM-DD)  
+✅ Field splitting and recombination  
+✅ Data type conversion and validation  
+✅ Null value identification and documentation  
+
+### Skills Demonstrated
+
+**Data Analysis**
+- Exploratory Data Analysis (EDA)
+- Data quality assessment and profiling
+- Duplicate detection and removal
+- Statistical summarization
+- Pattern identification
+
+**Data Cleaning**
+- Format standardization and normalization
+- Type conversion and validation
+- Null value handling strategies
+- Field transformation and splitting
+- Reproducible transformation scripts
+
+**Visualization & BI**
+- Interactive dashboard design
+- Filter implementation for dynamic querying
+- Color-coded performance metrics
+- User-friendly interface design
+- Stakeholder communication
+
+**Documentation & Communication**
+- Comprehensive data dictionaries
+- Step-by-step transformation logs
+- User guides and methodology documentation
+- Professional report writing
+- Process documentation for reproducibility
 
 ---
 
-## 📝 Project Impact Summary
+---
 
-✅ **220 recoverable students identified** (documentation gaps, not rejections)  
-✅ **$3.5M+ tuition revenue potential** (assuming 50% recovery rate)  
-✅ **100% conversion rate on follow-ups** (148 out of 148 admitted)  
-✅ **5-second query-to-insight time** (vs hours of manual analysis)  
-✅ **Workload rebalancing roadmap** (from 68.9% concentration to 45% target)
+## 🔄 The Analytics Workflow
+Raw Data (messy, duplicated, inconsistent)
+↓
+Data Exploration (identify problems, assess quality)
+↓
+Data Cleaning (remove duplicates, fix formats, standardize)
+↓
+Clean Dataset (reliable, consistent, documented)
+↓
+Visualization (interactive dashboard with filters)
+↓
+Stakeholder Access (query-to-insight in seconds)
+
+
+---
+
+## 🎓 Key Takeaways
+
+**This project demonstrates:**
+
+1. **Data literacy:** Understanding messy real-world datasets
+2. **Systematic approach:** Methodical data exploration and cleaning
+3. **Quality assurance:** Documenting every transformation step
+4. **Stakeholder focus:** Building tools non-technical people use
+5. **Business thinking:** Translating data insights into recommendations
+6. **Reproducibility:** Creating pipelines others can maintain and extend
+
+**Why this matters:**
+
+Most analysts focus on analysis and skip the hard part (cleaning and documentation). This project shows that data quality and clear documentation are the foundation for all downstream insights.
+
+---
+
+## 💼 Business Impact
+
+✅ Transformed unusable dataset into strategic asset  
+✅ Reduced query time from hours to seconds  
+✅ Enabled evidence-based decision making  
+✅ Created reproducible workflow for future projects  
+✅ Improved data quality by 24.7% (null rate reduction)  
+✅ Identified process optimization opportunities  
+
+---
+
+## 📚 Technologies & Tools
+
+**Languages & Libraries**
+- Python (pandas, numpy, matplotlib)
+- SQL (data extraction and validation)
+- Markdown (documentation)
+
+**Platforms & Tools**
+- Google Sheets (initial data inspection)
+- Looker Studio (dashboard and visualization)
+- Git/GitHub (version control)
+
+**Methodologies**
+- Exploratory Data Analysis (EDA)
+- Data quality assessment frameworks
+- ETL (Extract, Transform, Load) principles
+- Stakeholder-centered design
 
 ---
